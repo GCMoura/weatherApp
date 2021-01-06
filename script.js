@@ -22,7 +22,6 @@ async function getResult (city) {
     var res = await fetch(`${api}${city}&units=metric&appid=${key}`)
     var data = await res.json()
     
-    console.log(data)
     setCity(data)
     setTemp(data)
     setWeather(data)
@@ -33,7 +32,6 @@ function setCity(data) {
 
     var options = { year: 'numeric', month: 'long', day: 'numeric'}
     date.innerHTML = new Date().toLocaleDateString(options)
-
 }
 
 function setTemp(data) {
@@ -45,7 +43,7 @@ function setWeather(data) {
     icon.innerHTML = ''
     var img = document.createElement('img')
     img.classList.add('iconImg')
-    img.src = `svg/${data.weather[0].main}.svg`
+    img.src = `img/svg/${data.weather[0].main}.svg`
     icon.appendChild(img)
     container.style.backgroundImage = `url(img/${data.weather[0].main}.jpg)`
 }
