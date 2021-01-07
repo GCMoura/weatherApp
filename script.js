@@ -1,3 +1,9 @@
+
+const BASE_URL = window.location.hostname.includes('localhost')
+? 'http://localhost:5000'
+: 'http://localhost:5000'
+// : 'https://learningflix.herokuapp.com'
+
 var container = document.querySelector('.container')
 var input = document.querySelector('.input-city')
 var city = document.querySelector('.city')
@@ -16,15 +22,23 @@ function getInput(event) {
 
 async function getResult (city) {
 
-    var api = 'https://api.openweathermap.org/data/2.5/weather?q='
-    var key = 'e326f70fe8eed0ecb0447145bd437fa8'
+    var response
 
-    var res = await fetch(`${api}${city}&units=metric&appid=${key}`)
-    var data = await res.json()
-    
-    setCity(data)
-    setTemp(data)
-    setWeather(data)
+    fetch(`${BASE_URL}/${city}`, {
+        method: 'GET',
+        params: {
+            city
+        }
+      })
+      .then(async (serverResponse) => {
+        if (serverResponse) {
+            response = await serverResponse.json();
+
+            setCity(response)
+            setTemp(response)
+            setWeather(response)
+        }
+      });
 }
 
 function setCity(data) {

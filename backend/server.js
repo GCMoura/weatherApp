@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const dotenv = require('dotenv')
-const bcrypt = require('bcrypt')
+const axios = require('axios')
 const server = express()
 const router = express.Router()
 
@@ -12,22 +12,16 @@ dotenv.config()
 
 const api_key = process.env.API_KEY
 const port = process.env.PORT || 5000
-var api_key_encrypted
 
-async function createHash() {
-    const hash = await bcrypt.hash(api_key, 10)
-    api_key_encrypted = hash
-}
+router.get('/:city', async (req, res) => {
 
-createHash()
+  const { city } = req.params
 
-router.get('/api', async (req, res) => {
-
-  const compare_api_key = await bcrypt.compare(api_key, api_key_encrypted)
+  axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${api_key}`)
+    .then(response => {
+      res.send(response.data)
+    })
   
-  if(compare_api_key){
-    res.send(api_key)
-  }
 })
 
 server.use(router)
