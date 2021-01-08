@@ -1,0 +1,28 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "Weather App",
+  "main": "script.js",
+  "scripts": {
+    "server": "node backend/server.js",
+    "start": "npm run server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GCMoura/weatherApp.git"
+  },
+  "author": "Gabriel Moura",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GCMoura/weatherApp/issues"
+  },
+  "homepage": "https://github.com/GCMoura/weatherApp#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
