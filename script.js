@@ -1,7 +1,7 @@
 
 const BASE_URL = window.location.hostname.includes('localhost')
 ? 'http://localhost:5000'
-: 'https://app-openweather.herokuapp.com/'
+: 'https://app-openweather.herokuapp.com'
 
 var container = document.querySelector('.container')
 var input = document.querySelector('.input-city')
