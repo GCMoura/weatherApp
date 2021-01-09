@@ -15,22 +15,23 @@
     background-image: url('img/bg/bg.jpg');
     background-repeat: no-repeat;
 }
-
 .input-div {
     margin: 30px;
 }
 .input-city {
     width: 300px;
     height: 50px;
-    border: 2px solid #555;
+    border: 2px solid #222;
     border-bottom: 5px solid tomato;
     border-radius: 15px 0px 15px 0px;
     outline: none;
     font-size: 32px;
     background: transparent;
+    text-align: center;
 }
 input::placeholder{
     color: #888;
+    text-align: center;
 }
 
 .city-info {
@@ -67,6 +68,15 @@ input::placeholder{
 .weather {
     font-size: 32px;
     margin: 10px;
+}
+
+@media(max-width: 770px){
+    .city {
+        font-size: 32px;
+    }
+    .temperature {
+        font-size: 62px;
+    }
 }
 
 

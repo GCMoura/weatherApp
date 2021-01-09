@@ -32,11 +32,11 @@ async function getResult (city) {
       .then(async (serverResponse) => {
         if (serverResponse) {
             response = await serverResponse.json();
-
+            
             setCity(response)
             setTemp(response)
             setWeather(response)
-        }
+        } 
       });
 }
 
@@ -44,6 +44,7 @@ function setCity(data) {
     city.innerHTML = `${data.name}, ${data.sys.country}`
 
     var options = { year: 'numeric', month: 'long', day: 'numeric'}
+    
     date.innerHTML = new Date().toLocaleDateString(options)
 }
 
@@ -60,3 +61,4 @@ function setWeather(data) {
     icon.appendChild(img)
     container.style.backgroundImage = `url(img/${data.weather[0].main}.jpg)`
 }
+
